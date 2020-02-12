@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     path('addpost/', add_post_view, name='addpost'),
     path('', views.home, name='memelordapp-home'),
+    path('my-memes', views.myMemes, name='my-memes')
 ]
 
 if settings.DEBUG:
