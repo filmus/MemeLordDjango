@@ -11,6 +11,11 @@ def home(request):
     }
     return render(request, 'memelordapp/home.html', context)
 
+def myMemes(request):
+    context = {
+        'posts': Post.objects.filter(author=request.user)
+    }
+    return render(request, 'memelordapp/home.html', context)
 
 def add_post_view(request):
 
