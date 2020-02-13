@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from memelordapp.models import Post
+from django.db.models import Count
 
 
 def register(request):
@@ -34,9 +37,14 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
+    user = User.objects.annotate(post_count=Count('post')).order_by('-post_count').first()
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'postsCount': Post.objects.all().count(),
+        'lastPostDate': Post.objects.order_by('-date_posted').first().date_posted,
+        'memeLeader': user,
+        'contribution': Post.objects.filter(author=user).count()
     }
 
     return render(request, 'users/profile.html', context)
