@@ -62,13 +62,13 @@
             </div>
             <div class="col-md-4">
                 <div class="content-section">
-                    <h3>Our Sidebar</h3>
-                    <p class='text-muted'>You can put any information here you'd like.
+                    <h3>Meme Lord Statistics</h3>
+                    <p class='text-muted'>Here are some cool statistics on this site.
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-light">Latest Memes</li>
-                            <li class="list-group-item list-group-item-light">Announcements</li>
-                            <li class="list-group-item list-group-item-light">Calendars</li>
-                            <li class="list-group-item list-group-item-light">etc</li>
+                            <li class="list-group-item list-group-item-light">All memes: {{postsCount}} </li>
+                            <li class="list-group-item list-group-item-light">Last added on: {{lastPostDate  | date:"F d, Y"}}</li>
+                            <li class="list-group-item list-group-item-light">Meme leader: {{memeLeader}}</li>
+                            <li class="list-group-item list-group-item-light">Meme leader contribution: {{contribution}}</li>
                         </ul>
                     </p>
                 </div>
